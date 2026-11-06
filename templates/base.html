@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Budget System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Home Budget</h1>
+        <p>Expense Tracker and Analysis System</p>
+    </header>
+
+    <nav>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('expenses') }}">Expenses</a>
+        <a href="{{ url_for('alerts') }}">Alerts</a>
+        <a href="{{ url_for('audit_log') }}">Audit Log</a>
+        <a href="{{ url_for('reports') }}">Reports</a>
+        <a href="{{ url_for('category_analysis') }}">Category Analysis</a>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Home Budget System | Manage Your Money Wisely</p>
+    </footer>
+
+</body>
+</html>

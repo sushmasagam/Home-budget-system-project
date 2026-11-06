@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Category-wise Expense Analysis</h1>
+    <p>Understand how your spending is distributed across categories.</p>
+
+    {% if category_data %}
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Category</th>
+            <th>Total Expenses</th>
+            <th>Number of Transactions</th>
+        </tr>
+
+        {% for item in category_data %}
+        <tr>
+            <td>{{ item.category_name }}</td>
+            <td>₹ {{ item.total }}</td>
+            <td>{{ item.expense_count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No category expense data available yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

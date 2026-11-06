@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Home Budget System</h1>
+    <p>Welcome to your personal expense dashboard!</p>
+
+    <div class="dashboard-cards">
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <h2>₹ {{ total_expenses }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Number of Expenses</h3>
+            <h2>{{ expense_count }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Categories</h3>
+            <h2>{{ category_totals|length }}</h2>
+        </div>
+    </div>
+
+    <h2>Category-wise Expenses</h2>
+
+    {% if category_totals %}
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Total Amount</th>
+            </tr>
+
+            {% for item in category_totals %}
+            <tr>
+                <td>{{ item.category_name }}</td>
+                <td>₹ {{ item.total }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No expenses recorded yet.</p>
+    {% endif %}
+
+    <h2>Recent Alerts</h2>
+
+    {% if alerts %}
+        {% for alert in alerts %}
+            <div class="card">
+                {{ alert }}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No alerts available.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('expenses') }}">Add New Expense</a>
+</div>
+
+{% endblock %}

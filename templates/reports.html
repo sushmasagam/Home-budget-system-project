@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Expense Reports</h1>
+    <p>View your spending statistics and monthly expense summary.</p>
+
+    <div class="dashboard-cards">
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <h2>₹ {{ total_expenses }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Number of Transactions</h3>
+            <h2>{{ expense_count }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Average Expense</h3>
+            <h2>₹ {{ average_expense }}</h2>
+        </div>
+    </div>
+
+    <h2>Monthly Expense Trend</h2>
+
+    {% if monthly_data %}
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Month</th>
+            <th>Total Expenses</th>
+        </tr>
+
+        {% for item in monthly_data %}
+        <tr>
+            <td>{{ item.month }}</td>
+            <td>₹ {{ item.total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No monthly expense data available.</p>
+    {% endif %}
+</div>
+{% endblock %}

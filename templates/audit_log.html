@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Audit Log</h1>
+    <p>Track activities performed in the Home Budget System.</p>
+
+    {% if logs %}
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Log ID</th>
+            <th>User ID</th>
+            <th>Action</th>
+            <th>Date</th>
+        </tr>
+
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.log_id }}</td>
+            <td>{{ log.user_id }}</td>
+            <td>{{ log.action }}</td>
+            <td>{{ log.log_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No audit records available yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
